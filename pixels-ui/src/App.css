@@ -3,6 +3,14 @@
   background-color: #3675FF;
 }
 
+.pixel-content {
+  height: 100%;
+}
+
+.pixel-container-outer {
+  position: relative;
+}
+
 .pixel-container-inner {
   position: absolute;
   top: 50%; 
@@ -11,24 +19,14 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.cn {
-  position: relative;
-  width: 500px;
-  height: 500px;
+.header-container {
+  text-align: center;
 }
 
-.inner {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 200px;
-  height: 200px;
+.website-name {
+  color: white;
+  font-size: 50px;
 }
-
-.pixel-div-center {
-    margin-left: auto;
-    margin-right: auto;
- }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
