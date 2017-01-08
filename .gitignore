@@ -1,0 +1,6 @@
+.DS_Store
+.pyc
+.png
+
+# git add on env crashes
+pixels-env
