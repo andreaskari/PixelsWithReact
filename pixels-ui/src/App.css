@@ -3,11 +3,35 @@
   background-color: #3675FF;
 }
 
-.pixel-content {
-  height: 100%;
+/* For website header */
+
+.header-container {
+  padding: 10px;
+  height: 100px;
+  width: 100%;
+  text-align: center;
 }
 
-.pixel-container-outer {
+.website-name {
+  color: white;
+  font-size: 50px;
+}
+
+/* For pixel editor panel */
+
+.pixel-body-left {
+  float: left;
+  width: 50%;
+  height: calc(100% - 100px);
+  padding: 20px;
+}
+
+/* For pixel viewer container*/
+
+.pixel-body-right {
+  float: right;
+  width: 50%;
+  height: calc(100% - 100px);
   position: relative;
 }
 
@@ -19,14 +43,8 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.header-container {
-  text-align: center;
-}
 
-.website-name {
-  color: white;
-  font-size: 50px;
-}
+/* Garbage */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
