@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PictureSelector from './PictureSelector.js';
+import PanelMenu from './PanelMenu.js';
 import PictureViewer from './PictureViewer.js';
 
 // import logo from './logo.svg';
@@ -88,25 +88,20 @@ class App extends Component {
         <div className="header-container">
           <h1 className="white website-name">Pixel Editor</h1>
         </div>
-        <div className="pixel-body-left">
-          <h2 className="white">Choose an Image</h2>
-          <PictureSelector 
-            groupAndImages={this.state.groupAndImages} 
-            activeGroupImage={this.state.activeGroupImage}
-            setActiveGroupImage={(group, image) => {
-              console.log(group, image);
-              this.setState({
-                activeGroupImage: {group, image},
-                activeImageData: null,
-              });
-            }}
-          />
-        </div>
-        <div className="pixel-body-right">
-          <PictureViewer 
-            activeImageData={this.state.activeImageData} 
-          />
-        </div>
+        <PanelMenu
+          groupAndImages={this.state.groupAndImages} 
+          activeGroupImage={this.state.activeGroupImage}
+          setActiveGroupImage={(group, image) => {
+            console.log(group, image);
+            this.setState({
+              activeGroupImage: {group, image},
+              activeImageData: null,
+            });
+          }}
+        />
+        <PictureViewer 
+          activeImageData={this.state.activeImageData} 
+        />
       </div>      
     );
   }

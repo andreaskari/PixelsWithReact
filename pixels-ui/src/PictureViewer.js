@@ -36,17 +36,17 @@ export default class PictureViewer extends Component {
   }
 
   render() {
-    console.log("rerender");
-
     if (this.state.activeImageData == null) {
       return (
-        <div 
-          className="pixel-container-inner"
-          style={{
-            "width": "200px", 
-            "height": "200px"}}
-          >
-          <div className="ui active centered big loader"></div>
+        <div className="pixel-body-right">
+          <div 
+            className="pixel-container-inner"
+            style={{
+              "width": "200px", 
+              "height": "200px"}}
+            >
+            <div className="ui active centered big loader"></div>
+          </div>
         </div>
       );
     }
@@ -54,28 +54,27 @@ export default class PictureViewer extends Component {
     var width = this.state.activeImageData.width;
     var height = this.state.activeImageData.height;
     var pixelArray = [];
-    console.log(this.state.activeImageData);
     for (var y = 0; y < height; y += 1) {
       for (var x = 0; x < width; x += 1) {
         /* Add x,y coordinate respectivley to end of RGBA values */
         var item = this.state.activeImageData.matrix[y][x];
-        console.log(item);
+        // console.log(item);
         item.push(x);
         item.push(y);
         pixelArray.push(item);
       }
     }
 
-    console.log("change");
-
     return (
-      <div 
-        className="pixel-container-inner" 
-        style={{
-          "width": PIXEL_SIDE_LENGTH * width, 
-          "height": PIXEL_SIDE_LENGTH * height}}
-        >
-        { pixelArray.map((pixel) => { return this.getPixelDivHTML(pixel); })}
+      <div className="pixel-body-right">
+        <div 
+          className="pixel-container-inner" 
+          style={{
+            "width": PIXEL_SIDE_LENGTH * width, 
+            "height": PIXEL_SIDE_LENGTH * height}}
+          >
+          { pixelArray.map((pixel) => { return this.getPixelDivHTML(pixel); })}
+        </div>
       </div>
     );
 

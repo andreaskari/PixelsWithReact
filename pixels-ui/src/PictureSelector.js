@@ -101,6 +101,5 @@ export default class PictureSelector extends Component {
         </div>
       </div>
     );
-
   }
 }
