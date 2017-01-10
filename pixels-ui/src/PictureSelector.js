@@ -27,34 +27,30 @@ export default class PictureSelector extends Component {
 
     if (this.state.activeAccordianContent === group) {
       return (
-        <div>
+        <div key={group + "-" + images}>
           <div className="title active" onClick={() => {this.setActiveAccordianContent(null)}}>
             <i className="dropdown icon"></i>
             {group}
           </div>
           <div className="content active">
-            <p className="transition visible">
-              <div className="ui grid">
-                {images.map(getContent)}
-              </div>
-            </p>
+            <div className="ui grid">
+              {images.map(getContent)}
+            </div>
           </div>
         </div>
       );
     }
 
     return (
-      <div>
+      <div key={group + "-" + images}>
         <div className="title" onClick={() => {this.setActiveAccordianContent(group)}}>
           <i className="dropdown icon"></i>
           {group}
         </div>
         <div className="content">
-          <p>
-            <div className="ui padded grid">
-              {images.map(getContent)}
-            </div>
-          </p>
+          <div className="ui padded grid">
+            {images.map(getContent)}
+          </div>
         </div>
       </div>
     );
@@ -65,10 +61,10 @@ export default class PictureSelector extends Component {
 
     var imageName = image.substring(0, image.length - 4);
 
-    if (this.state.activeGroupImage === (group, image)) {
+    if (this.state.activeGroupImage && this.state.activeGroupImage["group"] === group && this.state.activeGroupImage["image"] === image) {
       return (
-        <div className="four wide column">
-          <button className="positive ui button" onClick={setActiveGroupImage}>
+        <div className="four wide column" key={group + "-" + image}>
+          <button className="positive fluid ui button" onClick={setActiveGroupImage}>
             {imageName}
           </button>
         </div>
@@ -76,8 +72,8 @@ export default class PictureSelector extends Component {
     }
 
     return (
-      <div className="four wide column">
-        <button className="ui button" onClick={setActiveGroupImage}>
+      <div className="four wide column" key={group + "-" + image}>
+        <button className="ui fluid button" onClick={setActiveGroupImage}>
           {imageName}
         </button>
       </div>
@@ -95,9 +91,6 @@ export default class PictureSelector extends Component {
         </div>
       );
     }
-
-    console.log(this.state.groupAndImages);
-    console.log(Object.keys(this.state.groupAndImages));
 
     return (
       <div className="ui segment">

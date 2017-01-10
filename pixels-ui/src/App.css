@@ -13,8 +13,11 @@
 }
 
 .website-name {
-  color: white;
   font-size: 50px;
+}
+
+.white {
+  color: white;
 }
 
 /* For pixel editor panel */

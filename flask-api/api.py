@@ -44,6 +44,7 @@ def get_groups_and_images():
 def get_pixel_grid(group, image):
     img = Image.open('imgs/Packages/' + group + "/" + image, 'r')
     pixel_list = list(img.getdata())
+    # print(pixel_list)
     width, height = img.size
     pixel_matrix = []
     for y in range(height):
@@ -57,3 +58,4 @@ def get_pixel_grid(group, image):
 
 if __name__ == "__main__":
     app.run()
+
