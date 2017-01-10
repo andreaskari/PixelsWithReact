@@ -6,6 +6,8 @@ import PictureViewer from './PictureViewer.js';
 // import logo from './logo.svg';
 import './App.css';
 
+let MENU_OPTIONS = ["Select Image", "Edit Image"];
+
 var popsicle = require('popsicle');
 
 let PIXEL_DATA_API_BASE_URL = "http://localhost:5000/";
@@ -17,6 +19,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      activePanelMenuOption: MENU_OPTIONS[0],
       groupAndImages: null,
       activeGroupImage: null,
       activeImageData: null,
@@ -29,7 +32,7 @@ class App extends Component {
     /* After a new image has been chosen to render, 
       this.state.activeGroupImage would have changed */
       if (prevState.activeGroupImage !== this.state.activeGroupImage) {
-        console.log(this.state)
+        console.log(this.state);
         var {group, image} = this.state.activeGroupImage;
         this.requestImage(group, image);
       }
@@ -89,6 +92,9 @@ class App extends Component {
           <h1 className="white website-name">Pixel Editor</h1>
         </div>
         <PanelMenu
+          menuOptions={MENU_OPTIONS}
+          activePanelMenuOption={this.state.activePanelMenuOption} 
+          setActivePanelMenuOption={(option) => { this.setState({activePanelMenuOption: option}); }}
           groupAndImages={this.state.groupAndImages} 
           activeGroupImage={this.state.activeGroupImage}
           setActiveGroupImage={(group, image) => {
