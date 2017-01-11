@@ -23,6 +23,7 @@ class App extends Component {
       groupAndImages: null,
       activeGroupImage: null,
       activeImageData: null,
+      activeColor: {a: 1, r: 255, g: 255, b: 255},
     };
 
     // this.requestImage("Megaman", "Megaman1.png")
@@ -98,11 +99,15 @@ class App extends Component {
           groupAndImages={this.state.groupAndImages} 
           activeGroupImage={this.state.activeGroupImage}
           setActiveGroupImage={(group, image) => {
-            console.log(group, image);
             this.setState({
               activeGroupImage: {group, image},
               activeImageData: null,
             });
+          }}
+          activeColor={this.state.activeColor}
+          setActiveColor={(color) => {
+            console.log(color);
+            this.setState({activeColor: color.rgb});
           }}
         />
         <PictureViewer 

@@ -9,10 +9,10 @@ export default class PanelMenu extends Component {
     super(props);
 
     this.state = {
-      activePanelMenuOption: null,
-      groupAndImages: null,
-      activeGroupImage: null,
-      activeColor: {a: 1, r: 255, g: 255, b: 255},
+      activePanelMenuOption: props.activePanelMenuOption,
+      groupAndImages: props.groupAndImages,
+      activeGroupImage: props.activeGroupImage,
+      activeColor: props.activeColor,
     };
   }
 
@@ -21,6 +21,7 @@ export default class PanelMenu extends Component {
       activePanelMenuOption: nextProps.activePanelMenuOption,
       groupAndImages: nextProps.groupAndImages,
       activeGroupImage: nextProps.activeGroupImage,
+      activeColor: nextProps.activeColor,
     });
   }
 
@@ -86,13 +87,13 @@ export default class PanelMenu extends Component {
           <div className="float-left">
             <ChromePicker
               color={this.state.activeColor}
-              onChangeComplete={this.handleActiveColorChange.bind(this)}
+              onChangeComplete={this.props.setActiveColor}
             />
           </div>
           <div className="float-right">
             <SwatchesPicker
               color={this.state.activeColor}
-              onChangeComplete={this.handleActiveColorChange.bind(this)}
+              onChangeComplete={this.props.setActiveColor}
             />
           </div>
         </div>
