@@ -34,6 +34,7 @@ export default class Toolbox extends Component {
 
     return (
       <button 
+        key={icon}
         className={iconAndState + " ui large circular icon button"}
         onClick={() => { this.props.setActiveTool(tool); }}
         >

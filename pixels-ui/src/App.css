@@ -76,3 +76,11 @@
   height: 36px;
   padding: 3px;
 }
+
+/* Selected pixels */
+
+.selected-pixel {
+  border-style: dashed;
+  border-width: 3px;
+  border-color: white;
+}

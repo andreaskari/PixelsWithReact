@@ -26,6 +26,7 @@ class App extends Component {
       activeImageData: null,
       activeColor: {a: 1, r: 255, g: 255, b: 255},
       activeTool: null,
+      selectedPixels: [],
     };
 
     // this.requestImage("Megaman", "Megaman1.png")
@@ -119,7 +120,20 @@ class App extends Component {
           }}
         />
         <PictureViewer 
-          activeImageData={this.state.activeImageData} 
+          activeImageData={this.state.activeImageData}
+          setActiveImageData={(activeImageData) => {
+            this.setState({activeImageData, selectedPixels: []});
+          }}
+          activeColor={this.state.activeColor}
+          setActiveColor={(color) => {
+            console.log(color);
+            this.setState({activeColor: color});
+          }}
+          activeTool={this.state.activeTool}
+          selectedPixels={this.state.selectedPixels}
+          setSelectedPixels={(selectedPixels) => {
+            this.setState({selectedPixels});
+          }}
         />
       </div>      
     );
