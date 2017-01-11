@@ -47,25 +47,32 @@
 }
 
 
-/* Garbage */
+/* Color Pickers */
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+.float-left {
+  float: left;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.float-right {
+  float: right;
 }
 
-.App-intro {
-  font-size: large;
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.active-color {
+  background-color: black;
+  width: 40px;
+  height: 30px;
+}
+
+.active-color-container {
+  background-color: white;
+  width: 46px;
+  height: 36px;
+  padding: 3px;
 }

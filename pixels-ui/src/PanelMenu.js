@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { ChromePicker, SwatchesPicker } from 'react-color';
+
 import PictureSelector from './PictureSelector.js';
 
 export default class PanelMenu extends Component {
@@ -10,6 +12,7 @@ export default class PanelMenu extends Component {
       activePanelMenuOption: null,
       groupAndImages: null,
       activeGroupImage: null,
+      activeColor: {a: 1, r: 255, g: 255, b: 255},
     };
   }
 
@@ -35,6 +38,11 @@ export default class PanelMenu extends Component {
     );
   }
 
+  handleActiveColorChange(color) {
+    console.log(color);
+    this.setState({activeColor: color.rgb});
+  }
+
   render() {
     if (this.state.activePanelMenuOption === this.props.menuOptions[0]) {
       return (
@@ -52,12 +60,46 @@ export default class PanelMenu extends Component {
       );
     }
 
+    let c = this.state.activeColor;
+    var activeRGBA = "rgba(" + c.r + "," + c.g + "," + c.b + "," + c.a + ")";
+
     return (
       <div className="pixel-body-left">
         <div className="ui big two item fluid menu">
           { this.props.menuOptions.map((option) => { return this.getMenuOptionHTML(option); }) }
         </div>
-        <h2 className="white">Edit Image</h2>
+        <h2 className="white">Toolbox</h2>
+        <button className="ui large circular eyedropper icon button">
+          <i className="eyedropper icon"></i>
+        </button>
+        <button className="ui large circular hand pointer icon button">
+          <i className="hand pointer icon"></i>
+        </button>
+        <button className="ui large circular wizard icon button">
+          <i className="wizard icon"></i>
+        </button>
+        <button className="ui large circular paint brush icon button">
+          <i className="paint brush icon"></i>
+        </button>
+        <h2 className="white">Color Palette</h2>
+        <div className="clearfix">
+          <div className="float-left">
+            <ChromePicker
+              color={this.state.activeColor}
+              onChangeComplete={this.handleActiveColorChange.bind(this)}
+            />
+          </div>
+          <div className="float-right">
+            <SwatchesPicker
+              color={this.state.activeColor}
+              onChangeComplete={this.handleActiveColorChange.bind(this)}
+            />
+          </div>
+        </div>
+        <h4 className="white" style={{"marginTop": "10px"}}>Active Color</h4>
+        <div className="active-color-container">
+          <div className="active-color" style={{"backgroundColor": activeRGBA}} ></div>
+        </div>
       </div>
     );
   }
