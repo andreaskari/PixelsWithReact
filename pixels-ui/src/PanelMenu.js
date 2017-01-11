@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { ChromePicker, SwatchesPicker } from 'react-color';
 
+import Toolbox from './Toolbox.js';
 import PictureSelector from './PictureSelector.js';
 
 export default class PanelMenu extends Component {
@@ -13,6 +14,7 @@ export default class PanelMenu extends Component {
       groupAndImages: props.groupAndImages,
       activeGroupImage: props.activeGroupImage,
       activeColor: props.activeColor,
+      activeTool: props.activeTool,
     };
   }
 
@@ -22,6 +24,7 @@ export default class PanelMenu extends Component {
       groupAndImages: nextProps.groupAndImages,
       activeGroupImage: nextProps.activeGroupImage,
       activeColor: nextProps.activeColor,
+      activeTool: nextProps.activeTool,
     });
   }
 
@@ -70,18 +73,12 @@ export default class PanelMenu extends Component {
           { this.props.menuOptions.map((option) => { return this.getMenuOptionHTML(option); }) }
         </div>
         <h2 className="white">Toolbox</h2>
-        <button className="ui large circular eyedropper icon button">
-          <i className="eyedropper icon"></i>
-        </button>
-        <button className="ui large circular hand pointer icon button">
-          <i className="hand pointer icon"></i>
-        </button>
-        <button className="ui large circular wizard icon button">
-          <i className="wizard icon"></i>
-        </button>
-        <button className="ui large circular paint brush icon button">
-          <i className="paint brush icon"></i>
-        </button>
+        <Toolbox
+          activeColor={this.state.activeColor}
+          tools={this.props.tools}
+          activeTool={this.state.activeTool}
+          setActiveTool={this.props.setActiveTool}
+        />
         <h2 className="white">Color Palette</h2>
         <div className="clearfix">
           <div className="float-left">

@@ -6,6 +6,7 @@ import PictureViewer from './PictureViewer.js';
 // import logo from './logo.svg';
 import './App.css';
 
+let TOOLS = ["Eye Dropper", "Pixel Selector", "Magic Wand", "Pixel Painter"];
 let MENU_OPTIONS = ["Select Image", "Edit Image"];
 
 var popsicle = require('popsicle');
@@ -24,6 +25,7 @@ class App extends Component {
       activeGroupImage: null,
       activeImageData: null,
       activeColor: {a: 1, r: 255, g: 255, b: 255},
+      activeTool: null,
     };
 
     // this.requestImage("Megaman", "Megaman1.png")
@@ -102,12 +104,18 @@ class App extends Component {
             this.setState({
               activeGroupImage: {group, image},
               activeImageData: null,
+              activeTool: null,
             });
           }}
           activeColor={this.state.activeColor}
           setActiveColor={(color) => {
             console.log(color);
             this.setState({activeColor: color.rgb});
+          }}
+          tools={TOOLS}
+          activeTool={this.state.activeTool}
+          setActiveTool={(tool) => {
+            this.setState({activeTool: tool});
           }}
         />
         <PictureViewer 
