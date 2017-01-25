@@ -43,7 +43,7 @@ $ python api.py
 Node App:
 ```
 $ cd pixels-ui/
-$ npm run start
+$ npm start
 ```
 
 ## Future Possible Additions
@@ -54,3 +54,4 @@ As of right now there is limited support and functionality (due to lack of appli
     + Dragging via "Pixel Selector" tool
     + Laso tool
 -  Zoom in/out of photos 
+
