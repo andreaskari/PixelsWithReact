@@ -24,7 +24,8 @@ export default class PictureViewer extends Component {
   }
 
   colorsMatch(pixel1, pixel2) {
-    return pixel1[0] === pixel2[0] && pixel1[1] === pixel2[1] && pixel1[2] === pixel2[2] && pixel1[3] === pixel2[3];
+    return (pixel1[0] === pixel2[0] && pixel1[1] === pixel2[1] && pixel1[2] === pixel2[2] && pixel1[3] === pixel2[3])
+      || (pixel1[3] === pixel2[3] && pixel1[3] === 0);
   }
 
   magicWandPixelSearch(x, y) {
@@ -85,7 +86,7 @@ export default class PictureViewer extends Component {
         var activeImageData = this.state.activeImageData;
         let c = this.state.activeColor;
         this.state.selectedPixels.forEach((p) => {
-          this.state.activeImageData.matrix[p[1]][p[0]] = [c.r, c.g, c.b, c.a * 255];
+          activeImageData.matrix[p[1]][p[0]] = [c.r, c.g, c.b, c.a * 255];
         });
         this.props.setActiveImageData(activeImageData);
       }
@@ -93,7 +94,7 @@ export default class PictureViewer extends Component {
 
     var className = "";
     this.state.selectedPixels.forEach((p) => {
-      if (p[0] == pixel[4] && p[1] == pixel[5]) {
+      if (p[0] === pixel[4] && p[1] === pixel[5]) {
         className = "selected-pixel";
       }
     });

@@ -106,6 +106,7 @@ class App extends Component {
               activeGroupImage: {group, image},
               activeImageData: null,
               activeTool: null,
+              selectedPixels: [],
             });
           }}
           activeColor={this.state.activeColor}
